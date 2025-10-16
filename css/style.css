@@ -1,174 +1,85 @@
-/* ==============================
-   Virgínia Fernandes Mota — Site pessoal
-   style.css (versão acessível)
-   ============================== */
-
-/* ---- Importando fonte ---- */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
-/* ---- Paleta e fontes ---- */
-:root {
-  --cor-principal: #004d40;
-  --cor-secundaria: #00695c;
-  --cor-fundo: #f8f9fa;
-  --cor-texto: #1a1a1a;
-  --cor-link: #00796b;
-  --cor-link-hover: #004d40;
-  --cor-foco: #ffb300;
-  --fonte-base: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* ---- Reset e base ---- */
+/* Reset */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* Corpo */
 body {
-  margin: 0;
-  font-family: var(--fonte-base);
-  color: var(--cor-texto);
-  background-color: var(--cor-fundo);
-  line-height: 1.6;
-  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  scroll-behavior: smooth;
 }
 
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
-/* ---- Cabeçalho ---- */
-header {
-  background-color: var(--cor-principal);
-  color: white;
-  padding: 1.5rem 0;
+/* Capa */
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6c63ff, #c09fff);
+  color: #fff;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
+.typing-container h1 {
+  font-size: 2.5em;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 
-header p {
-  margin: 0.4rem 0 0;
-  font-size: 1.1rem;
-  font-weight: 400;
+/* Cursor piscando */
+.typing-container h1::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
 }
 
-/* ---- Navegação ---- */
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* Subtítulo */
+.cover p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+/* Botão */
+.cover .btn {
+  padding: 12px 28px;
+  background-color: #ffdd57;
+  color: #6c63ff;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.cover .btn:hover {
+  background-color: #fff;
+  color: #6c63ff;
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Navegação */
 nav {
-  background-color: var(--cor-secundaria);
-  text-align: center;
-  padding: 0.6rem 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-nav a:hover,
-nav a:focus {
-  color: #c8e6c9;
-  outline: none;
-}
-
-nav a:focus-visible {
-  outline: 3px solid var(--cor-foco);
-  outline-offset: 3px;
-}
-
-/* ---- Conteúdo principal ---- */
-main {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 2rem;
-  margin-top: 1.5rem;
-}
-
-main h2 {
-  color: var(--cor-principal);
-  border-bottom: 3px solid var(--cor-secundaria);
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-/* ---- Links ---- */
-a {
-  color: var(--cor-link);
-  text-decoration: underline;
-}
-
-a:hover,
-a:focus {
-  color: var(--cor-link-hover);
-  text-decoration: none;
-}
-
-a:focus-visible {
-  outline: 3px solid var(--cor-foco);
-  outline-offset: 3px;
-}
-
-/* ---- Listas e tabelas ---- */
-ul {
-  list-style-type: disc;
-  margin-left: 1.5rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
-  text-align: left;
-}
-
-th {
-  background-color: var(--cor-secundaria);
-  color: white;
-}
-
-/* ---- Rodapé ---- */
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #555;
-  padding: 1.5rem 0;
-  margin-top: 2rem;
-  border-top: 1px solid #ccc;
-}
-
-/* ---- Acessibilidade extra ---- */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
-/* ---- Responsividade ---- */
-@media (max-width: 768px) {
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
-  }
-
-  header h1 {
-    font-size: 1.6rem;
-  }
-}
+  margin-left: 15px;
+  font-weight: 600
+::contentReference[oaicite:0]{index=0}
+ 
