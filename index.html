@@ -11,7 +11,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Custom CSS -->
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
@@ -22,27 +24,46 @@
       font-weight: 700;
     }
     .hero {
-      background-color: #007bff;
+      background: linear-gradient(to right, #007bff, #00c6ff);
       color: white;
-      padding: 60px 0;
+      padding: 80px 20px;
       text-align: center;
     }
     .hero img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 5px solid white;
       margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .hero img:hover {
+      transform: scale(1.05);
     }
     .section-title {
-      margin-top: 40px;
-      margin-bottom: 20px;
+      margin-top: 50px;
+      margin-bottom: 30px;
       font-weight: 700;
       text-align: center;
+      color: #007bff;
     }
     .card {
       margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .social-icons a {
+      color: #007bff;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #0056b3;
     }
   </style>
 </head>
@@ -75,6 +96,12 @@
       <p class="lead" id="heroDesc">
         Professora e pesquisadora em Acessibilidade para Jogos Digitais e Inteligência Artificial
       </p>
+      <div class="social-icons mt-3">
+        <a href="https://wwws.cnpq.br/cvlattesweb/PKG_MENU.showLogin.do" target="_blank" title="Currículo Lattes"><i class="fas fa-file-alt"></i></a>
+        <a href="https://www.linkedin.com/in/virginiafernandes" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.researchgate.net/profile/Virginia-Fernandes-Mota" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+        <a href="https://scholar.google.com/citations?user=XXXXXXX" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+      </div>
     </div>
   </section>
 
@@ -82,7 +109,7 @@
   <section id="about" class="container mt-5">
     <h2 class="section-title" id="aboutTitle">Sobre</h2>
     <p id="aboutText">
-      Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade, principalmente nos Jogos Digitais. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).
+      Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).
     </p>
   </section>
 
