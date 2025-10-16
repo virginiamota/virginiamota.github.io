@@ -1,183 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site pessoal da professora Virgínia Fernandes Mota, docente do COLTEC/UFMG.">
-  <title>Virgínia Fernandes Mota — COLTEC/UFMG</title>
-  <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    /* Botão de idioma */
-    .language-switch {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background-color: var(--cor-secundaria);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .language-switch:hover,
-    .language-switch:focus {
-      background-color: var(--cor-principal);
-      outline: none;
-    }
-
-    .lang-en {
-      display: none;
-    }
-  </style>
+  <title>Virgínia Fernandes Mota</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <header>
-    <button class="language-switch" id="langBtn" aria-label="Change language">EN</button>
     <h1>Virgínia Fernandes Mota</h1>
-    <p>Professora — Colégio Técnico da Universidade Federal de Minas Gerais (COLTEC/UFMG)</p>
+    <p>Professora do Departamento de Informática do COLTEC/UFMG</p>
   </header>
 
   <nav>
-    <a href="#sobre" class="lang-pt">Sobre</a>
-    <a href="#academico" class="lang-pt">Acadêmico</a>
-    <a href="#ensino" class="lang-pt">Ensino</a>
-    <a href="#contato" class="lang-pt">Contato</a>
-
-    <a href="#sobre" class="lang-en">About</a>
-    <a href="#academico" class="lang-en">Academic</a>
-    <a href="#ensino" class="lang-en">Teaching</a>
-    <a href="#contato" class="lang-en">Contact</a>
+    <a href="#" id="pt-btn">Português</a>
+    <a href="#" id="en-btn">English</a>
   </nav>
 
-  <div class="container">
-    <main>
-      <!-- SOBRE / ABOUT -->
-      <section id="sobre">
-        <h2 class="lang-pt">Sobre</h2>
-        <h2 class="lang-en">About</h2>
+  <main class="container">
+    <!-- Conteúdo em Português -->
+    <section id="pt-content">
+      <h2>Sobre</h2>
+      <p>Sou professora do Departamento de Informática do <strong>COLTEC - Universidade Federal de Minas Gerais (UFMG)</strong>, Brasil.</p>
+      <p>Atuo nas áreas de <strong>acessibilidade, visão computacional e aprendizado de máquina</strong>. Desenvolvo e oriento projetos de iniciação científica e tecnológica, com foco em acessibilidade digital e inclusão em jogos.</p>
 
-        <p class="lang-pt">
-          Sou professora do <strong>Colégio Técnico da UFMG (COLTEC)</strong>, atuando no curso de 
-          <em>Desenvolvimento de Sistemas</em>. Tenho interesse em temas relacionados à 
-          <strong>acessibilidade digital, desenvolvimento de jogos e tecnologias inclusivas</strong>. 
-          Coordeno projetos voltados à acessibilidade em jogos digitais e oriento trabalhos 
-          que exploram o uso de tecnologias assistivas em contextos educacionais e de entretenimento.
-        </p>
-        <p class="lang-pt">
-          Tenho trabalhado com o uso de <strong>inteligência artificial generativa</strong> para apoiar o design inclusivo 
-          e a acessibilidade em jogos, e com iniciativas que promovem <strong>diversidade e equidade</strong> 
-          no ensino de tecnologia e computação.
-        </p>
+      <h2>Formação Acadêmica</h2>
+      <ul>
+        <li>🎓 Pós-Doutorado em Pesquisa (2025) - Instituto de Computação, Universidade Estadual de Campinas (UNICAMP, Brasil)</li>
+        <li>🎓 Ph.D. em Ciência da Computação (2018) - Universidade Federal de Minas Gerais (UFMG, Brasil)</li>
+        <li>🎓 Mestrado em Modelagem Computacional (2011) - Universidade Federal de Juiz de Fora (UFJF, Brasil)</li>
+        <li>🎓 Master em Systèmes Intelligents et Communicants (2010) - École Nationale Supérieure de l'Electronique et de ses Applications (ENSEA, França)</li>
+        <li>🎓 Bacharelado em Ciência da Computação (2008) - Universidade Federal de Juiz de Fora (UFJF, Brasil)</li>
+      </ul>
 
-        <p class="lang-en">
-          I am a professor at the <strong>Technical College of UFMG (COLTEC)</strong>, teaching in the 
-          <em>Software Development</em> program. My main interests include 
-          <strong>digital accessibility, game development, and inclusive technologies</strong>. 
-          I coordinate research and student projects focused on accessibility in digital games 
-          and assistive technologies applied to education and entertainment.
-        </p>
-        <p class="lang-en">
-          My current work explores the use of <strong>generative AI</strong> to support inclusive design and game accessibility, 
-          as well as initiatives promoting <strong>diversity and equity</strong> in computing education.
-        </p>
-      </section>
+      <h2>Interesses de Pesquisa</h2>
+      <ul>
+        <li>Acessibilidade em Jogos Digitais</li>
+        <li>Aprendizado de Máquina</li>
+        <li>Visão Computacional</li>
+        <li>Processamento de Imagens</li>
+      </ul>
+    </section>
 
-      <!-- ACADÊMICO / ACADEMIC -->
-      <section id="academico">
-        <h2 class="lang-pt">Acadêmico</h2>
-        <h2 class="lang-en">Academic</h2>
+    <!-- English Content -->
+    <section id="en-content" style="display:none;">
+      <h2>About</h2>
+      <p>I'm a professor at the Informatics Department of <strong>COLTEC - Federal University of Minas Gerais (UFMG)</strong>, Brazil.</p>
+      <p>Always working to encourage girls to enter the STEM area and to promote awareness on accessibility, I have supervised works that won the <strong>Technovation Challenge (Mappid, 2020)</strong>, <strong>Change the Game (2nd Edition)</strong>, and <strong>Gamethons (2023)</strong>.</p>
 
-        <p class="lang-pt">
-          Doutora em <strong>Ciência da Computação</strong> pela <strong>Universidade Federal de Minas Gerais (UFMG)</strong>, 
-          com pesquisa na área de <em>Interação Humano-Computador (IHC)</em>, acessibilidade e design inclusivo. 
-          Atua em projetos que conectam tecnologia, ética e sociedade, com foco no desenvolvimento sustentável de software 
-          e no impacto das novas tecnologias na inclusão digital.
-        </p>
-        <ul class="lang-pt">
-          <li>Professora do curso técnico em Desenvolvimento de Sistemas — COLTEC/UFMG</li>
-          <li>Pesquisadora nas áreas de acessibilidade, jogos digitais e ética em IA</li>
-          <li>Participante de grupos de pesquisa em Interação Humano-Computador</li>
-        </ul>
+      <h2>Academic Background</h2>
+      <ul>
+        <li>🎓 Postdoctoral Researcher (2025) - Institute of Computing, State University of Campinas (UNICAMP, Brazil)</li>
+        <li>🎓 Ph.D. in Computer Science (2018) - Federal University of Minas Gerais (UFMG, Brazil)</li>
+        <li>🎓 MSc Degree in Computer Modelling (2011) - Federal University of Juiz de Fora (UFJF, Brazil)</li>
+        <li>🎓 Master in Systèmes Intelligents et Communicants (2010) - École Nationale Supérieure de l'Electronique et de ses Applications (ENSEA, France)</li>
+        <li>🎓 BSc Degree in Computer Science (2008) - Federal University of Juiz de Fora (UFJF, Brazil)</li>
+      </ul>
 
-        <p class="lang-en">
-          Ph.D. in <strong>Computer Science</strong> from the <strong>Federal University of Minas Gerais (UFMG)</strong>, 
-          with research in <em>Human-Computer Interaction (HCI)</em>, accessibility, and inclusive design. 
-          Her work bridges technology, ethics, and society, focusing on sustainable software development 
-          and the impact of new technologies on digital inclusion.
-        </p>
-        <ul class="lang-en">
-          <li>Professor in the Software Development program — COLTEC/UFMG</li>
-          <li>Researcher in accessibility, digital games, and AI ethics</li>
-          <li>Member of research groups in Human-Computer Interaction</li>
-        </ul>
-      </section>
+      <h2>Research Interests</h2>
+      <ul>
+        <li>Accessibility for Digital Games</li>
+        <li>Machine Learning</li>
+        <li>Computer Vision</li>
+        <li>Image Processing</li>
+      </ul>
+    </section>
+  </main>
 
-      <!-- ENSINO / TEACHING -->
-      <section id="ensino">
-        <h2 class="lang-pt">Ensino</h2>
-        <h2 class="lang-en">Teaching</h2>
-
-        <p class="lang-pt">
-          Leciono disciplinas nas áreas de <strong>programação, desenvolvimento de sistemas e interação humano-computador</strong>. 
-          Além do ensino técnico, incentivo os alunos a desenvolverem uma visão crítica sobre tecnologia, inclusão e sociedade.  
-        </p>
-        <ul class="lang-pt">
-          <li>Coordenação de projetos de jogos acessíveis.</li>
-          <li>Desenvolvimento de aplicativos acessíveis para iOS</li>
-        </ul>
-
-        <p class="lang-en">
-          I teach courses in <strong>programming, systems development, and human-computer interaction</strong>. 
-          Beyond technical instruction, I encourage students to develop a critical understanding 
-          of technology, inclusion, and society.
-        </p>
-        <ul class="lang-en">
-          <li>Coordination of accessible game projects.</li>
-          <li>Development of accessible applications for iOS</li>
-        </ul>
-      </section>
-
-      <!-- CONTATO / CONTACT -->
-      <section id="contato">
-        <h2 class="lang-pt">Contato</h2>
-        <h2 class="lang-en">Contact</h2>
-
-        <p class="lang-pt"><strong>Email:</strong> virginia@teiacoltec.org</p>
-        <p class="lang-pt"><strong>Instituição:</strong> Colégio Técnico da Universidade Federal de Minas Gerais (COLTEC/UFMG)</p>
-        <p class="lang-pt"><strong>Endereço:</strong> Av. Antônio Carlos, 6627 – Pampulha, Belo Horizonte, MG, Brasil</p>
-
-        <p class="lang-en"><strong>Email:</strong> virginia@teiacoltec.org</p>
-        <p class="lang-en"><strong>Institution:</strong> Technical College of the Federal University of Minas Gerais (COLTEC/UFMG)</p>
-        <p class="lang-en"><strong>Address:</strong> Av. Antônio Carlos, 6627 – Pampulha, Belo Horizonte, MG, Brazil</p>
-      </section>
-    </main>
-
-    <footer>
-      <p class="lang-pt">&copy; 2025 Virgínia Fernandes Mota — COLTEC/UFMG</p>
-      <p class="lang-en">&copy; 2025 Virgínia Fernandes Mota — COLTEC/UFMG</p>
-      <p class="lang-pt">Desenvolvido para fins acadêmicos. Última atualização: outubro de 2025.</p>
-      <p class="lang-en">Developed for academic purposes. Last update: October 2025.</p>
-    </footer>
-  </div>
+  <footer>
+    <p>&copy; 2025 Virgínia Fernandes Mota — COLTEC/UFMG</p>
+  </footer>
 
   <script>
-    const btn = document.getElementById('langBtn');
-    const ptElements = document.querySelectorAll('.lang-pt');
-    const enElements = document.querySelectorAll('.lang-en');
-    let lang = 'pt';
+    const ptBtn = document.getElementById('pt-btn');
+    const enBtn = document.getElementById('en-btn');
+    const ptContent = document.getElementById('pt-content');
+    const enContent = document.getElementById('en-content');
 
-    btn.addEventListener('click', () => {
-      lang = lang === 'pt' ? 'en' : 'pt';
-      btn.textContent = lang === 'pt' ? 'EN' : 'PT';
-      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    ptBtn.addEventListener('click', () => {
+      ptContent.style.display = 'block';
+      enContent.style.display = 'none';
+    });
 
-      ptElements.forEach(el => el.style.display = lang === 'pt' ? '' : 'none');
-      enElements.forEach(el => el.style.display = lang === 'pt' ? 'none' : '');
+    enBtn.addEventListener('click', () => {
+      ptContent.style.display = 'none';
+      enContent.style.display = 'block';
     });
   </script>
 </body>
