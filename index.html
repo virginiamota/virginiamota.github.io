@@ -57,10 +57,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Formação</a></li>
-          <li class="nav-item"><a class="nav-link" href="#research">Pesquisas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" id="navAbout">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education" id="navEducation">Formação</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research" id="navResearch">Pesquisas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" id="navProjects">Projetos</a></li>
         </ul>
+        <button class="btn btn-outline-light ms-3" id="toggleLang">English</button>
       </div>
     </div>
   </nav>
@@ -69,48 +71,52 @@
   <section class="hero">
     <div class="container">
       <img src="foto-perfil.jpg" alt="Virginia Fernandes Mota">
-      <h1>Virginia Fernandes Mota</h1>
-      <p class="lead">Professora e pesquisadora em Acessibilidade para Jogos Digitais e Inteligência Artificial</p>
+      <h1 id="heroName">Virginia Fernandes Mota</h1>
+      <p class="lead" id="heroDesc">
+        Professora e pesquisadora em Acessibilidade para Jogos Digitais e Inteligência Artificial
+      </p>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="container mt-5">
-    <h2 class="section-title">Sobre</h2>
-    <p>Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Supervisiono trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).</p>
+    <h2 class="section-title" id="aboutTitle">Sobre</h2>
+    <p id="aboutText">
+      Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Supervisiono trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).
+    </p>
   </section>
 
   <!-- Education Section -->
   <section id="education" class="container mt-5">
-    <h2 class="section-title">Formação Acadêmica</h2>
+    <h2 class="section-title" id="educationTitle">Formação Acadêmica</h2>
     <div class="row">
       <div class="col-md-6">
         <div class="card p-3">
-          <h5>🎓 Postdoctoral Researcher (2025)</h5>
+          <h5>🎓 Pós-doutorado (2025)</h5>
           <p>Instituto de Computação - Universidade Estadual de Campinas (UNICAMP, Brasil)</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-3">
-          <h5>🎓 Ph.D. in Computer Science (2018)</h5>
+          <h5>🎓 Doutorado em Ciência da Computação (2018)</h5>
           <p>Universidade Federal de Minas Gerais (UFMG, Brasil)</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-3">
-          <h5>🎓 MSc Degree in Computer Modelling (2011)</h5>
+          <h5>🎓 Mestrado em Modelagem Computacional (2011)</h5>
           <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-3">
-          <h5>🎓 Master in Systèmes Intelligents et Communicants (2010)</h5>
+          <h5>🎓 Mestrado em Systèmes Intelligents et Communicants (2010)</h5>
           <p>École Nationale Supérieure de l'Electronique et de ses Applications (ENSEA, França)</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-3">
-          <h5>🎓 BSc Degree in Computer Science (2008)</h5>
+          <h5>🎓 Bacharelado em Ciência da Computação (2008)</h5>
           <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
         </div>
       </div>
@@ -119,16 +125,105 @@
 
   <!-- Research Section -->
   <section id="research" class="container mt-5 mb-5">
-    <h2 class="section-title">Research Interests</h2>
-    <ul>
-      <li>Accessibility for Digital Games</li>
-      <li>Machine Learning</li>
-      <li>Computer Vision</li>
-      <li>Image Processing</li>
+    <h2 class="section-title" id="researchTitle">Áreas de Pesquisa</h2>
+    <ul id="researchList">
+      <li>Acessibilidade para Jogos Digitais</li>
+      <li>Aprendizado de Máquina</li>
+      <li>Visão Computacional</li>
+      <li>Processamento de Imagens</li>
     </ul>
   </section>
 
+  <!-- Projects Section -->
+  <section id="projects" class="container mt-5 mb-5">
+    <h2 class="section-title" id="projectsTitle">Projetos em Destaque</h2>
+    <p id="projectsText1">
+      O novo jogo <strong>Magenta Arcade II</strong>, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!
+    </p>
+    <p id="projectsText2">
+      O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.
+    </p>
+    <p>Magenta Arcade II está disponível em:</p>
+    <ul id="projectsLinks">
+      <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.magentaarcade2" target="_blank">Google Play Store</a></li>
+      <li><a href="https://apps.apple.com/us/app/magenta-arcade-ii/id123456789" target="_blank">App Store</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Virginia Fernandes Mota</p>
+  </footer>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Translation JS -->
+  <script>
+    const langBtn = document.getElementById('toggleLang');
+    let currentLang = 'pt';
+
+    const translations = {
+      en: {
+        navAbout: "About",
+        navEducation: "Education",
+        navResearch: "Research",
+        navProjects: "Projects",
+        heroDesc: "Professor and researcher in Accessibility for Digital Games and Artificial Intelligence",
+        aboutTitle: "About",
+        aboutText: "I'm a professor at the Informatics Department of COLTEC - Universidade Federal de Minas Gerais (UFMG), Brazil. I work encouraging girls to enter STEM and promoting accessibility awareness. I have supervised works that won Technovation Challenge (Mappid 2020), Change the Game (2nd Edition) and Gamethons (2023).",
+        educationTitle: "Education",
+        researchTitle: "Research Interests",
+        researchList: ["Accessibility for Digital Games","Machine Learning","Computer Vision","Image Processing"],
+        projectsTitle: "Highlighted Projects",
+        projectsText1: "The new game Magenta Arcade II, developed by the studio Long Hat House in Belo Horizonte, has just been released with accessibility features!",
+        projectsText2: "The accessibility project, titled 'Magenta Arcade II: Study and Implementation of Accessibility for a Digital Game', was carried out in collaboration between Long Hat House and UFMG, with accessibility coordination by me.",
+        projectsLinks: ["Google Play Store","App Store"]
+      },
+      pt: {
+        navAbout: "Sobre",
+        navEducation: "Formação",
+        navResearch: "Pesquisas",
+        navProjects: "Projetos",
+        heroDesc: "Professora e pesquisadora em Acessibilidade para Jogos Digitais e Inteligência Artificial",
+        aboutTitle: "Sobre",
+        aboutText: "Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Supervisiono trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).",
+        educationTitle: "Formação Acadêmica",
+        researchTitle: "Áreas de Pesquisa",
+        researchList: ["Acessibilidade para Jogos Digitais","Aprendizado de Máquina","Visão Computacional","Processamento de Imagens"],
+        projectsTitle: "Projetos em Destaque",
+        projectsText1: "O novo jogo Magenta Arcade II, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!",
+        projectsText2: "O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.",
+        projectsLinks: ["Google Play Store","App Store"]
+      }
+    };
+
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      langBtn.textContent = currentLang === 'pt' ? "English" : "Português";
+
+      document.getElementById('navAbout').textContent = translations[currentLang].navAbout;
+      document.getElementById('navEducation').textContent = translations[currentLang].navEducation;
+      document.getElementById('navResearch').textContent = translations[currentLang].navResearch;
+      document.getElementById('navProjects').textContent = translations[currentLang].navProjects;
+
+      document.getElementById('heroDesc').textContent = translations[currentLang].heroDesc;
+      document.getElementById('aboutTitle').textContent = translations[currentLang].aboutTitle;
+      document.getElementById('aboutText').textContent = translations[currentLang].aboutText;
+      document.getElementById('educationTitle').textContent = translations[currentLang].educationTitle;
+      document.getElementById('researchTitle').textContent = translations[currentLang].researchTitle;
+
+      const researchItems = document.getElementById('researchList').children;
+      translations[currentLang].researchList.forEach((text, idx) => researchItems[idx].textContent = text);
+
+      document.getElementById('projectsTitle').textContent = translations[currentLang].projectsTitle;
+      document.getElementById('projectsText1').textContent = translations[currentLang].projectsText1;
+      document.getElementById('projectsText2').textContent = translations[currentLang].projectsText2;
+
+      const projectLinks = document.getElementById('projectsLinks').children;
+      translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].textContent = text);
+    });
+  </script>
+
 </body>
 </html>
