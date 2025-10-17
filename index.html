@@ -176,6 +176,9 @@
       <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank">Google Play Store</a></li>
       <li><a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank">App Store</a></li>
     </ul>
+    <p id="projectsText3">
+      Veja também o projeto <a href="projects.html">Jogaê: Jogos Acessíveis e Educativos</a>.
+    </p>
   </section>
 
   <!-- Projects Section -->
@@ -219,6 +222,7 @@
         projectsText1: "The new game Magenta Arcade II, developed by the studio Long Hat House in Belo Horizonte, has just been released with accessibility features!",
         projectsText2: "The accessibility project, titled 'Magenta Arcade II: Study and Implementation of Accessibility for a Digital Game', was carried out in collaboration between Long Hat House and UFMG, with accessibility coordination by me.",
         projectsLinks: ["Google Play Store","App Store"],
+        projectsText3: "See also the project <a href="projects.html">JOGAÊ: Accessible and Educational Games</a>.",
         contactTitle: "Contact",
         contactText1: "Office 235 - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901",
         contactText2: "E-mail: virginia@teiacoltec.org or virginiafernandesmota@gmail.com"
@@ -239,6 +243,7 @@
         projectsText1: "O novo jogo Magenta Arcade II, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!",
         projectsText2: "O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.",
         projectsLinks: ["Google Play Store","App Store"],
+        projectsText3: "Veja também o projeto <a href="projects.html">JOGAÊ: Accessible and Educational Games</a>.",
         contactTitle: "Contato",
         contactText1: "Sala 235 - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901",
         contactText2: "E-mail: virginia@teiacoltec.org ou virginiafernandesmota@gmail.com"
@@ -270,6 +275,8 @@
 
       const projectLinks = document.getElementById('projectsLinks').children;
       translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].textContent = text);
+
+      document.getElementById('projectsText3').textContent = translations[currentLang].projectsText3;
 
       document.getElementById('contactTitle').textContent = translations[currentLang].contactTitle;
       document.getElementById('contactText1').textContent = translations[currentLang].contactText1;
