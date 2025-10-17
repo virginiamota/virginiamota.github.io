@@ -175,7 +175,7 @@
         navHome: "Início",
         navProjects: "Projetos",
         pageTitle: "Jogaê: Jogos Acessíveis e Educativos",
-        pageSubtitle: "Um projeto pesquisa e ensino sobre inclusão digital por meio de jogos",
+        pageSubtitle: "Um projeto de pesquisa e ensino sobre inclusão digital por meio de jogos",
         intro: "O projeto <strong>Jogaê: Jogos Acessíveis e Educativos</strong> tem como objetivo promover a inclusão digital e a conscientização sobre acessibilidade por meio do desenvolvimento de jogos acessíveis. A iniciativa envolve estudantes do ensino médio técnico do COLTEC/UFMG em atividades práticas de design, programação e avaliação de jogos digitais com foco em acessibilidade.",
         objectivesTitle: "Objetivos",
         objectivesList: [
@@ -207,6 +207,9 @@
       translations[currentLang].objectivesList.forEach((text, idx) => objItems[idx].textContent = text);
       document.getElementById('resultsTitle').textContent = translations[currentLang].resultsTitle;
       document.getElementById('resultsText').innerHTML = translations[currentLang].resultsText;
+      document.getElementById('repoTitle').textContent = translations[currentLang].repoTitle;
+      document.getElementById('repoCardTitle').textContent = translations[currentLang].repoCardTitle;
+      document.getElementById('repoCardText').innerHTML = translations[currentLang].repoCardText; // <-- usar innerHTML
       document.getElementById('publicationsTitle').textContent = translations[currentLang].publicationsTitle;
       document.getElementById('backButton').textContent = translations[currentLang].backButton;
     });
