@@ -274,9 +274,9 @@
       document.getElementById('projectsText2').textContent = translations[currentLang].projectsText2;
 
       const projectLinks = document.getElementById('projectsLinks').children;
-      translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].textContent = text);
+      translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].innerHTML = text);
 
-      document.getElementById('projectsText3').textContent = translations[currentLang].projectsText3;
+      document.getElementById('projectsText3').textContent = translations[currentLang].innerHTML;
 
       document.getElementById('contactTitle').textContent = translations[currentLang].contactTitle;
       document.getElementById('contactText1').textContent = translations[currentLang].contactText1;
