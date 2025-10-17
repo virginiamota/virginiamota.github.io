@@ -82,6 +82,7 @@
           <li class="nav-item"><a class="nav-link" href="#education" id="navEducation">Formação</a></li>
           <li class="nav-item"><a class="nav-link" href="#research" id="navResearch">Pesquisas</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects" id="navProjects">Projetos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" id="navProjects">Contato</a></li>
         </ul>
         <button class="btn btn-outline-light ms-3" id="toggleLang">English</button>
       </div>
@@ -172,8 +173,8 @@
     </p>
     <p>Magenta Arcade II está disponível em:</p>
     <ul id="projectsLinks">
-      <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.magentaarcade2" target="_blank">Google Play Store</a></li>
-      <li><a href="https://apps.apple.com/us/app/magenta-arcade-ii/id123456789" target="_blank">App Store</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank">Google Play Store</a></li>
+      <li><a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank">App Store</a></li>
     </ul>
   </section>
 
@@ -196,6 +197,7 @@
         navEducation: "Education",
         navResearch: "Research",
         navProjects: "Projects",
+        navContact: "Contact",
         heroDesc: "Professor and researcher in Accessibility for Digital Games and Computer Vision",
         aboutTitle: "About",
         aboutText: "I'm a professor at the Informatics Department of COLTEC - Universidade Federal de Minas Gerais (UFMG), Brazil. I work encouraging girls to enter STEM and promoting accessibility awareness. I have supervised works that won Technovation Challenge (Mappid 2020), Change the Game (2nd Edition) and Gamethons (2023).",
@@ -205,13 +207,17 @@
         projectsTitle: "Highlighted Projects",
         projectsText1: "The new game Magenta Arcade II, developed by the studio Long Hat House in Belo Horizonte, has just been released with accessibility features!",
         projectsText2: "The accessibility project, titled 'Magenta Arcade II: Study and Implementation of Accessibility for a Digital Game', was carried out in collaboration between Long Hat House and UFMG, with accessibility coordination by me.",
-        projectsLinks: ["Google Play Store","App Store"]
+        projectsLinks: ["Google Play Store","App Store"],
+        contactTitle: "Contact",
+        contactText1: "Office 235 - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901",
+        contactText2: "E-mail: virginia@teiacoltec.org or virginiafernandesmota@gmail.com"
       },
       pt: {
         navAbout: "Sobre",
         navEducation: "Formação",
         navResearch: "Pesquisas",
         navProjects: "Projetos",
+        nacContact: "Contato",
         heroDesc: "Professora e pesquisadora em Acessibilidade para Jogos Digitais e Visão Computacional",
         aboutTitle: "Sobre",
         aboutText: "Sou professora no Departamento de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).",
@@ -221,7 +227,10 @@
         projectsTitle: "Projetos em Destaque",
         projectsText1: "O novo jogo Magenta Arcade II, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!",
         projectsText2: "O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.",
-        projectsLinks: ["Google Play Store","App Store"]
+        projectsLinks: ["Google Play Store","App Store"],
+        contactTitle: "Contato",
+        contactText1: "Sala 235 - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901",
+        contactText2: "E-mail: virginia@teiacoltec.org or virginiafernandesmota@gmail.com"
       }
     };
 
@@ -233,6 +242,7 @@
       document.getElementById('navEducation').textContent = translations[currentLang].navEducation;
       document.getElementById('navResearch').textContent = translations[currentLang].navResearch;
       document.getElementById('navProjects').textContent = translations[currentLang].navProjects;
+      document.getElementById('navContact').textContent = translations[currentLang].navContact;
 
       document.getElementById('heroDesc').textContent = translations[currentLang].heroDesc;
       document.getElementById('aboutTitle').textContent = translations[currentLang].aboutTitle;
@@ -249,6 +259,10 @@
 
       const projectLinks = document.getElementById('projectsLinks').children;
       translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].textContent = text);
+
+      document.getElementById('contactTitle').textContent = translations[currentLang].contactTitle;
+      document.getElementById('contactText1').textContent = translations[currentLang].contactText1;
+      document.getElementById('contactText2').textContent = translations[currentLang].contactText2;
     });
   </script>
 
