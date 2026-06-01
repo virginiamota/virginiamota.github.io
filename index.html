@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virginia Fernandes Mota - Professora e Pesquisadora</title>
+  <title>Virginia Fernandes Mota - Professora e Pesquisadora em Acessibilidade</title>
   
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +15,31 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
+    /* Acessibilidade: Foco visível para navegação por teclado */
+    *:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 2px;
+      background-color: rgba(255, 193, 7, 0.1);
+      border-radius: 4px;
+    }
+
+    /* Skip to content link - aparece apenas quando focado */
+    .skip-to-content {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .skip-to-content:focus-visible {
+      top: 0;
+      outline: 3px solid #ffc107;
+    }
+
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #f8f9fa;
@@ -36,15 +61,17 @@
       border-radius: 50%;
       border: 5px solid white;
       margin-bottom: 20px;
+      /* Mantém a animação, não afeta acessibilidade desde que não seja essencial */
       transition: transform 0.3s;
     }
-     .hero-logo {
+    .hero img:hover,
+    .hero img:focus-visible {
+      transform: scale(1.05);
+    }
+    .hero-logo {
       max-width: 200px;
       display: block;
       margin: 0 auto 20px;
-    }
-    .hero img:hover {
-      transform: scale(1.05);
     }
     .section-title {
       margin-top: 50px;
@@ -57,29 +84,54 @@
       margin-bottom: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .card:hover {
+    /* Manter hover mas sem prejuízo */
+    .card:hover,
+    .card:focus-within {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
     .social-icons a {
-      color: #007bff;
+      color: white;
       font-size: 1.5rem;
       margin: 0 10px;
       transition: color 0.3s;
+      display: inline-block;
     }
-    .social-icons a:hover {
+    .social-icons a:hover,
+    .social-icons a:focus-visible {
+      color: #ffc107;
+    }
+    /* Melhor contraste para links dentro de list-group */
+    .list-group-item a {
       color: #0056b3;
+      text-decoration: underline;
+    }
+    .list-group-item a:focus-visible,
+    .list-group-item a:hover {
+      color: #003d80;
+    }
+    footer {
+      background-color: #212529;
+    }
+    /* Botão de idioma com foco adequado */
+    #toggleLang:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <!-- Link para pular navegação e ir direto ao conteúdo principal -->
+  <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+
+  <!-- Navbar com aria-label para identificação -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Navegação principal">
     <div class="container">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-brand" aria-label="Virginia Fernandes Mota - Início"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menu de navegação">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
@@ -89,271 +141,303 @@
           <li class="nav-item"><a class="nav-link" href="#projects" id="navProjects">Projetos</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact" id="navContact">Contato</a></li>
         </ul>
-        <button class="btn btn-outline-light ms-3" id="toggleLang">English</button>
+        <button class="btn btn-outline-light ms-3" id="toggleLang" aria-label="Trocar idioma para Inglês / Switch to English">English</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <img src="perfil.png" alt="Virginia Fernandes Mota">
-      <h1 id="heroName">Virginia Fernandes Mota</h1>
-      <p class="lead" id="heroDesc">
-        Professora e pesquisadora em Acessibilidade para Jogos Digitais e Visão Computacional
+  <!-- Main content - identificado para skip link -->
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <!-- Foto de perfil com alt descritivo -->
+        <img src="perfil.png" alt="Retrato de Virginia Fernandes Mota, sorrindo, com cabelos escuros na altura dos ombros.">
+        <h1 id="hero-heading">Virginia Fernandes Mota</h1>
+        <p class="lead" id="heroDesc">
+          Professora e pesquisadora em Acessibilidade para Jogos Digitais e Visão Computacional
+        </p>
+        <div class="social-icons mt-3" aria-label="Links para perfis acadêmicos e profissionais">
+          <a href="http://lattes.cnpq.br/3250170839435251" target="_blank" title="Currículo Lattes (abre em nova aba)"><i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">Currículo Lattes</span></a>
+          <a href="https://www.linkedin.com/in/virgínia-fernandes-mota-599145182/" target="_blank" title="LinkedIn (abre em nova aba)"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></a>
+          <a href="https://www.researchgate.net/profile/Virginia-Mota" target="_blank" title="ResearchGate (abre em nova aba)"><i class="fab fa-researchgate" aria-hidden="true"></i><span class="visually-hidden">ResearchGate</span></a>
+          <a href="https://scholar.google.com.br/citations?user=tkkUU9EAAAAJ&hl=en&oi=ao" target="_blank" title="Google Scholar (abre em nova aba)"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">Google Scholar</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-5" aria-labelledby="aboutTitle">
+      <h2 class="section-title" id="aboutTitle">Sobre</h2>
+      <p id="aboutText">
+        Sou professora no Setor de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Pesquiso na área de acessibilidade para jogos digitais e na área de Visão Computacional. Também trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).
       </p>
-      <div class="social-icons mt-3">
-        <a href="http://lattes.cnpq.br/3250170839435251" target="_blank" title="Currículo Lattes"><i class="fas fa-file-alt"></i></a>
-        <a href="https://www.linkedin.com/in/virgínia-fernandes-mota-599145182/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.researchgate.net/profile/Virginia-Mota" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-        <a href="https://scholar.google.com.br/citations?user=tkkUU9EAAAAJ&hl=en&oi=ao" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="container mt-5">
-    <h2 class="section-title" id="aboutTitle">Sobre</h2>
-    <p id="aboutText">
-      Sou professora no Setor de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Pesquiso na área de acessibilidade para jogos digitais e na área de Visão Computacional. Também trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).
-    </p>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="container mt-5">
-    <h2 class="section-title" id="educationTitle">Formação Acadêmica</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h5>🎓 Pós-doutorado (2025)</h5>
-          <p>Instituto de Computação - Universidade Estadual de Campinas (UNICAMP, Brasil)</p>
+    <!-- Education Section -->
+    <section id="education" class="container mt-5" aria-labelledby="educationTitle">
+      <h2 class="section-title" id="educationTitle">Formação Acadêmica</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h3>🎓 Pós-doutorado (2025)</h3>
+            <p>Instituto de Computação - Universidade Estadual de Campinas (UNICAMP, Brasil)</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h3>🎓 Doutorado em Ciência da Computação (2018)</h3>
+            <p>Universidade Federal de Minas Gerais (UFMG, Brasil)</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h3>🎓 Mestrado em Modelagem Computacional (2011)</h3>
+            <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h3>🎓 Mestrado em Systèmes Intelligents et Communicants (2010)</h3>
+            <p>École Nationale Supérieure de l'Electronique et de ses Applications (ENSEA, França)</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h3>🎓 Bacharelado em Ciência da Computação (2008)</h3>
+            <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h5>🎓 Doutorado em Ciência da Computação (2018)</h5>
-          <p>Universidade Federal de Minas Gerais (UFMG, Brasil)</p>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="container mt-5 mb-5" aria-labelledby="researchTitle">
+      <h2 class="section-title" id="researchTitle">Publicações Recentes</h2>
+      
+      <ul id="researchList" class="list-group list-group-flush" aria-label="Lista de publicações acadêmicas">
+        <li class="list-group-item">
+          MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. 
+          <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong>
+          FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.
+        </li>
+        <li class="list-group-item">
+          MOTA, V. F.; DUARTE, E. F. . 
+          <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong>
+          Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.
+        </li>
+        <li class="list-group-item">
+          MOTA, V.F.; DUARTE, E. F. 
+          <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design.</strong> 
+          Communications in Computer and Information Science, Springer Nature Switzerland, 2025.
+        </li>
+        <li class="list-group-item">
+          MOTA, Virgínia Fernandes; DUARTE, Emanuel Felipe.  
+          <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> 
+          SBGames 2025, Salvador.
+        </li>
+      </ul>
+
+      <p class="mt-3" id="researchMore">
+        Para mais publicações, visite meu 
+        <a href="http://lattes.cnpq.br/3250170839435251" target="_blank" rel="noopener noreferrer"><strong>Currículo Lattes</strong> (abre em nova aba)</a>.
+      </p>
+    </section>
+      
+    <!-- Projects Section -->
+    <section id="projects" class="container mt-5 mb-5" aria-labelledby="projectsTitle">
+      <h2 class="section-title" id="projectsTitle">Projetos em Destaque</h2>
+
+      <div class="row mt-4">
+        <!-- Card 1 – Magenta Arcade II -->
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="imgs/magenta_arcade_thumbnail.jpg" class="hero-logo" alt="Capa do jogo Magenta Arcade II mostrando uma nave espacial magenta em fundo estrelado.">
+            <div class="card-body">
+              <h3 class="card-title fs-5">Magenta Arcade II</h3>
+              <p class="card-text" id="projectsText1">
+                O novo jogo <strong>Magenta Arcade II</strong>, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!
+              </p>
+              <p class="card-text" id="projectsText2">
+                O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG.
+              </p>
+              <ul class="list-unstyled" id="projectsLinks" aria-label="Links para download do jogo">
+                <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank" rel="noopener noreferrer">Google Play Store (abre em nova aba)</a></li>
+                <li><a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank" rel="noopener noreferrer">App Store (abre em nova aba)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 – Jogaê -->
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="imgs/jogae_thumbnail.jpg" class="hero-logo" alt="Logotipo do projeto Jogaê com letras coloridas e ícone de controle de videogame.">
+            <div class="card-body">
+              <h3 class="card-title fs-5">Jogaê: Jogos Acessíveis e Educativos</h3>
+              <p class="card-text" id="projectsText3">
+                Conheça o projeto <strong>Jogaê</strong>, uma iniciativa focada na criação e estudo de jogos digitais acessíveis e educativos.
+              </p>
+              <a href="projects.html" class="btn btn-primary" id="projectsButton3">Ver Projeto Jogaê</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h5>🎓 Mestrado em Modelagem Computacional (2011)</h5>
-          <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h5>🎓 Mestrado em Systèmes Intelligents et Communicants (2010)</h5>
-          <p>École Nationale Supérieure de l'Electronique et de ses Applications (ENSEA, França)</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h5>🎓 Bacharelado em Ciência da Computação (2008)</h5>
-          <p>Universidade Federal de Juiz de Fora (UFJF, Brasil)</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Research Section -->
-<section id="research" class="container mt-5 mb-5">
-  <h2 class="section-title" id="researchTitle">Publicações Recentes</h2>
-  
-  <ul id="researchList" class="list-group list-group-flush">
-
-    <li class="list-group-item">
-     MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. 
-    <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong>
-       FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.
-    </li>
-    
-    <li class="list-group-item">
-      MOTA, V. F.; DUARTE, E. F. . 
-    <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong>
-      Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.
-    </li>
-    
-    <li class="list-group-item">
-      MOTA, V.F.; DUARTE, E. F. 
-      <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design.</strong> 
-      Communications in Computer and Information Science, Springer Nature Switzerland, 2025.
-    </li>
-
-    <li class="list-group-item">
-      MOTA, Virgínia Fernandes; DUARTE, Emanuel Felipe.  
-      <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> 
-      SBGames 2025, Salvador.
-    </li>
-  </ul>
-
-  <p class="mt-3" id="researchMore">
-    Para mais publicações, visite meu 
-    <a href="http://lattes.cnpq.br/3250170839435251" target="_blank"><strong>Currículo Lattes</strong></a>.
-  </p>
-</section>
-  
-<!-- Projects Section -->
-<section id="projects" class="container mt-5 mb-5">
-  <h2 class="section-title" id="projectsTitle">Projetos em Destaque</h2>
-
-  <div class="row mt-4">
-
-    <!-- Card 1 – Magenta Arcade II -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="imgs/magenta_arcade_thumbnail.jpg" class="hero-logo" alt="Imagem do jogo Magenta Arcade II">
-        <div class="card-body">
-          <h5 class="card-title">Magenta Arcade II</h5>
-          <p class="card-text" id="projectsText1">
-            O novo jogo <strong>Magenta Arcade II</strong>, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!
-          </p>
-          <p class="card-text" id="projectsText2">
-            O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG.
-          </p>
-          <ul id="projectsLinks">
-            <li><a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank">Google Play Store</a></li>
-            <li><a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank">App Store</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 – Jogaê -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="imgs/jogae_thumbnail.jpg" class="hero-logo" alt="Imagem do projeto Jogaê">
-        <div class="card-body">
-          <h5 class="card-title">Jogaê: Jogos Acessíveis e Educativos</h5>
-            <p class="card-text" id="projectsText3">
-              Conheça o projeto <strong>Jogaê</strong>, uma iniciativa focada na criação e estudo de jogos digitais acessíveis e educativos.
-            </p>
-              <a href="projects.html" class="btn btn-primary" id="projectsButton3">Ver Projeto</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Projects Section -->
-  <section id="contact" class="container mt-5 mb-5">
-    <h2 class="section-title" id="contactTitle">Contato</h2>
-    <p id="contactText1">
-      <strong>Sala 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901
-    </p>
-    <p id="contactText2">
-      E-mail: virginia@teiacoltec.org ou virginiafernandesmota@gmail.com
-    </p>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="container mt-5 mb-5" aria-labelledby="contactTitle">
+      <h2 class="section-title" id="contactTitle">Contato</h2>
+      <address>
+        <p id="contactText1">
+          <strong>Sala 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais<br>
+          Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG<br>
+          CEP 31270-901
+        </p>
+        <p id="contactText2">
+          E-mail: <a href="mailto:virginia@teiacoltec.org">virginia@teiacoltec.org</a> ou <a href="mailto:virginiafernandesmota@gmail.com">virginiafernandesmota@gmail.com</a>
+        </p>
+      </address>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Virginia Fernandes Mota</p>
+    <p>&copy; 2025 Virginia Fernandes Mota - Acessibilidade e Inclusão Digital</p>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Translation JS -->
+  <!-- Translation JS com melhorias de acessibilidade: anúncio de mudança de idioma e foco -->
   <script>
-    const langBtn = document.getElementById('toggleLang');
-    let currentLang = 'pt';
+    (function() {
+      const langBtn = document.getElementById('toggleLang');
+      let currentLang = 'pt';
 
-    const translations = {
-      en: {
-        navAbout: "About",
-        navEducation: "Education",
-        navResearch: "Publications",
-        navProjects: "Projects",
-        navContact: "Contact",
-        heroDesc: "Professor and researcher in Accessibility for Digital Games and Computer Vision",
-        aboutTitle: "About",
-        aboutText: "I'm a professor at the Informatics Department of COLTEC - Universidade Federal de Minas Gerais (UFMG), Brazil. I conduct research in the areas of accessibility for digital games and Computer Vision. I also work to encourage girls to enter STEM and promoting accessibility awareness. I have supervised works that won Technovation Challenge (Mappid 2020), Change the Game (2nd Edition) and Gamethons (2023).",
-        educationTitle: "Education",
-        researchTitle: "Recent Publications",
-        researchMore: 'For more publications, visit my <a href="http://lattes.cnpq.br/3250170839435251" target="_blank"><strong>Lattes CV</strong></a>.',
-        researchList: ['MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong> FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.',
-                       'MOTA, V. F.; DUARTE, E. F. <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong>Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.',
-                       'MOTA, V. F.; DUARTE, E. F. <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design</strong> Communications in Computer and Information Science, Springer Nature Switzerland, 2025.',
-                       'MOTA, Virginia Fernandes; DUARTE, Emanuel Felipe. <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> SBGames 2025, Salvador.'],
-        projectsTitle: "Highlighted Projects",
-        projectsText1: "The new game Magenta Arcade II, developed by the studio Long Hat House in Belo Horizonte, has just been released with accessibility features!",
-        projectsText2: "The accessibility project, titled 'Magenta Arcade II: Study and Implementation of Accessibility for a Digital Game', was carried out in collaboration between Long Hat House and UFMG, with accessibility coordination by me.",
-        projectsLinks: ['<a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank">Google Play Store</a>','<a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank">App Store</a>'],
-        projectsText3: "An initiative focused on the creation and study of accessible and educational digital games.",
-        projectsButton3: "See Project",
-        contactTitle: "Contact",
-        contactText1: '<strong>Office 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901',
-        contactText2: "E-mail: virginia@teiacoltec.org or virginiafernandesmota@gmail.com"
-      },
-      pt: {
-        navAbout: "Sobre",
-        navEducation: "Formação",
-        navResearch: "Publicações",
-        navProjects: "Projetos",
-        navContact: "Contato",
-        heroDesc: "Professora e pesquisadora em Acessibilidade para Jogos Digitais e Visão Computacional",
-        aboutTitle: "Sobre",
-        aboutText: "Sou professora no Setor de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Pesquiso na área de acessibilidade para jogos digitais e na área de Visão Computacional. Também trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).",
-        educationTitle: "Formação Acadêmica",
-        researchTitle: "Publicações Recentes",
-        researchMore: 'Para mais publicações, visite meu <a href="http://lattes.cnpq.br/3250170839435251" target="_blank"><strong>Currículo Lattes</strong></a>.',
-        researchList: ['MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong> FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.','MOTA, V. F.; DUARTE, E. F. <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong>Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.',
-      'MOTA, V. F.; DUARTE, E. F. <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design.</strong> Communications in Computer and Information Science, Springer Nature Switzerland, 2025.',
-      'MOTA, Virginia Fernandes; DUARTE, Emanuel Felipe. <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> SBGames 2025, Salvador.'
-    ],
-        projectsTitle: "Projetos em Destaque",
-        projectsText1: "O novo jogo Magenta Arcade II, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!",
-        projectsText2: "O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.",
-        projectsLinks: ['<a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank">Google Play Store</a>','<a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank">App Store</a>'],
-        projectsText3: "Conheça o projeto Jogaê, uma iniciativa focada na criação e estudo de jogos digitais acessíveis e educativos.",
-        projectsButton3: "Ver Projeto",
-        contactTitle: "Contato",
-        contactText1: '<strong>Sala 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG CEP 31270-901',
-        contactText2: "E-mail: virginia@teiacoltec.org ou virginiafernandesmota@gmail.com"
+      // Criar um elemento ARIA live para anunciar mudanças de idioma
+      let liveRegion = document.createElement('div');
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('class', 'visually-hidden');
+      document.body.appendChild(liveRegion);
+
+      const translations = {
+        en: {
+          navAbout: "About",
+          navEducation: "Education",
+          navResearch: "Publications",
+          navProjects: "Projects",
+          navContact: "Contact",
+          heroDesc: "Professor and researcher in Accessibility for Digital Games and Computer Vision",
+          aboutTitle: "About",
+          aboutText: "I'm a professor at the Informatics Department of COLTEC - Universidade Federal de Minas Gerais (UFMG), Brazil. I conduct research in the areas of accessibility for digital games and Computer Vision. I also work to encourage girls to enter STEM and promoting accessibility awareness. I have supervised works that won Technovation Challenge (Mappid 2020), Change the Game (2nd Edition) and Gamethons (2023).",
+          educationTitle: "Education",
+          researchTitle: "Recent Publications",
+          researchMore: 'For more publications, visit my <a href="http://lattes.cnpq.br/3250170839435251" target="_blank" rel="noopener noreferrer"><strong>Lattes CV</strong> (opens in new tab)</a>.',
+          researchList: [
+            'MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong> FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.',
+            'MOTA, V. F.; DUARTE, E. F. <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong> Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.',
+            'MOTA, V. F.; DUARTE, E. F. <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design.</strong> Communications in Computer and Information Science, Springer Nature Switzerland, 2025.',
+            'MOTA, Virginia Fernandes; DUARTE, Emanuel Felipe. <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> SBGames 2025, Salvador.'
+          ],
+          projectsTitle: "Highlighted Projects",
+          projectsText1: "The new game Magenta Arcade II, developed by Long Hat House studio in Belo Horizonte, has just been released with accessibility features!",
+          projectsText2: "The accessibility project, titled 'Magenta Arcade II: Study and Implementation of Accessibility for a Digital Game', was carried out in collaboration between Long Hat House and UFMG, with accessibility coordination by me.",
+          projectsLinks: [
+            '<a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank" rel="noopener noreferrer">Google Play Store (opens in new tab)</a>',
+            '<a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank" rel="noopener noreferrer">App Store (opens in new tab)</a>'
+          ],
+          projectsText3: "Discover Jogaê, an initiative focused on creating and studying accessible and educational digital games.",
+          projectsButton3: "See Jogaê Project",
+          contactTitle: "Contact",
+          contactText1: '<strong>Office 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais<br>Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG<br>CEP 31270-901',
+          contactText2: 'Email: <a href="mailto:virginia@teiacoltec.org">virginia@teiacoltec.org</a> or <a href="mailto:virginiafernandesmota@gmail.com">virginiafernandesmota@gmail.com</a>'
+        },
+        pt: {
+          navAbout: "Sobre",
+          navEducation: "Formação",
+          navResearch: "Publicações",
+          navProjects: "Projetos",
+          navContact: "Contato",
+          heroDesc: "Professora e pesquisadora em Acessibilidade para Jogos Digitais e Visão Computacional",
+          aboutTitle: "Sobre",
+          aboutText: "Sou professora no Setor de Informática do COLTEC - Universidade Federal de Minas Gerais (UFMG), Brasil. Pesquiso na área de acessibilidade para jogos digitais e na área de Visão Computacional. Também trabalho incentivando meninas a entrar na área de STEM e promovendo a conscientização sobre acessibilidade. Já supervisionei trabalhos que ganharam prêmios como Technovation Challenge (Mappid, 2020), Change the Game (2ª Edição) e Gamethons (2023).",
+          educationTitle: "Formação Acadêmica",
+          researchTitle: "Publicações Recentes",
+          researchMore: 'Para mais publicações, visite meu <a href="http://lattes.cnpq.br/3250170839435251" target="_blank" rel="noopener noreferrer"><strong>Currículo Lattes</strong> (abre em nova aba)</a>.',
+          researchList: [
+            'MOTA, V. F.; LARANJEIRA, CAMILA ; STEINMULLER, T. ; DUARTE, E. F.. <strong> Fair Play: Exploring Play, Accessibility and Representation Towards a Framework for Fairness in Digital Games.</strong> FAccT 2026 - ACM Conference on Fairness, Accountability and Transparency, 2026. Proceedings of ACM Conference on Fairness, Accountability and Transparency, 2026.',
+            'MOTA, V. F.; DUARTE, E. F. <strong>Phenomenology and Digital Games: Perspectives on Why and Directions on How.</strong> Proceedings of the Workshop on Phenomenological Concepts and Methods for HCI Research co-located with 20th IFIP TC13 International Conference on Human-Computer Interaction (INTERACT 2025), 2025.',
+            'MOTA, V. F.; DUARTE, E. F. <strong>Revisiting and Reframing Play: Towards Incorporating Representation and Diversity in Contemporary Game Design.</strong> Communications in Computer and Information Science, Springer Nature Switzerland, 2025.',
+            'MOTA, Virginia Fernandes; DUARTE, Emanuel Felipe. <strong>20 Anos de Acessibilidade no SBGames: Uma Revisão sobre Inclusão em Jogos Digitais entre 2004 e 2024.</strong> SBGames 2025, Salvador.'
+          ],
+          projectsTitle: "Projetos em Destaque",
+          projectsText1: "O novo jogo Magenta Arcade II, desenvolvido pelo estúdio Long Hat House de Belo Horizonte, acaba de ser lançado com recursos de acessibilidade!",
+          projectsText2: "O projeto de acessibilidade, intitulado “Magenta Arcade II: Estudo e Implementação de Acessibilidade para um Jogo Digital”, foi realizado em colaboração entre Long Hat House e a UFMG, com coordenação de acessibilidade por minha parte.",
+          projectsLinks: [
+            '<a href="https://play.google.com/store/apps/details?id=com.longhathouse.MagentaArcadeII.Premium" target="_blank" rel="noopener noreferrer">Google Play Store (abre em nova aba)</a>',
+            '<a href="https://apps.apple.com/br/app/magenta-arcade-ii/id6670578338" target="_blank" rel="noopener noreferrer">App Store (abre em nova aba)</a>'
+          ],
+          projectsText3: "Conheça o projeto Jogaê, uma iniciativa focada na criação e estudo de jogos digitais acessíveis e educativos.",
+          projectsButton3: "Ver Projeto Jogaê",
+          contactTitle: "Contato",
+          contactText1: '<strong>Sala 235</strong> - Colégio Técnico - Universidade Federal de Minas Gerais<br>Av. Antônio Carlos, 6627. Pampulha - Belo Horizonte - MG<br>CEP 31270-901',
+          contactText2: 'E-mail: <a href="mailto:virginia@teiacoltec.org">virginia@teiacoltec.org</a> ou <a href="mailto:virginiafernandesmota@gmail.com">virginiafernandesmota@gmail.com</a>'
+        }
+      };
+
+      function updateLanguage() {
+        const t = translations[currentLang];
+        document.getElementById('navAbout').textContent = t.navAbout;
+        document.getElementById('navEducation').textContent = t.navEducation;
+        document.getElementById('navResearch').textContent = t.navResearch;
+        document.getElementById('navProjects').textContent = t.navProjects;
+        document.getElementById('navContact').textContent = t.navContact;
+        document.getElementById('heroDesc').textContent = t.heroDesc;
+        document.getElementById('aboutTitle').textContent = t.aboutTitle;
+        document.getElementById('aboutText').textContent = t.aboutText;
+        document.getElementById('educationTitle').textContent = t.educationTitle;
+        document.getElementById('researchTitle').textContent = t.researchTitle;
+        
+        const researchItems = document.getElementById('researchList').children;
+        for (let i = 0; i < t.researchList.length && i < researchItems.length; i++) {
+          researchItems[i].innerHTML = t.researchList[i];
+        }
+        
+        document.getElementById('projectsTitle').textContent = t.projectsTitle;
+        document.getElementById('projectsText1').textContent = t.projectsText1;
+        document.getElementById('projectsText2').textContent = t.projectsText2;
+        const projectLinks = document.getElementById('projectsLinks').children;
+        if (projectLinks.length === t.projectsLinks.length) {
+          for (let i = 0; i < projectLinks.length; i++) {
+            projectLinks[i].innerHTML = t.projectsLinks[i];
+          }
+        }
+        document.getElementById('researchMore').innerHTML = t.researchMore;
+        document.getElementById('projectsText3').textContent = t.projectsText3;
+        document.getElementById('projectsButton3').textContent = t.projectsButton3;
+        document.getElementById('contactTitle').textContent = t.contactTitle;
+        document.getElementById('contactText1').innerHTML = t.contactText1;
+        document.getElementById('contactText2').innerHTML = t.contactText2;
+        
+        // Anunciar mudança de idioma para leitores de tela
+        const langMessage = currentLang === 'pt' ? 'Idioma alterado para Português' : 'Language changed to English';
+        liveRegion.textContent = langMessage;
+        
+        // Atualizar o lang do html (opcional mas recomendado)
+        document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
       }
-    };
 
-    langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'pt' ? 'en' : 'pt';
-      langBtn.textContent = currentLang === 'pt' ? "English" : "Português";
-
-      document.getElementById('navAbout').textContent = translations[currentLang].navAbout;
-      document.getElementById('navEducation').textContent = translations[currentLang].navEducation;
-      document.getElementById('navResearch').textContent = translations[currentLang].navResearch;
-      document.getElementById('navProjects').textContent = translations[currentLang].navProjects;
-      document.getElementById('navContact').textContent = translations[currentLang].navContact;
-
-      document.getElementById('heroDesc').textContent = translations[currentLang].heroDesc;
-      document.getElementById('aboutTitle').textContent = translations[currentLang].aboutTitle;
-      document.getElementById('aboutText').textContent = translations[currentLang].aboutText;
-      document.getElementById('educationTitle').textContent = translations[currentLang].educationTitle;
-      document.getElementById('researchTitle').textContent = translations[currentLang].researchTitle;
-
-      const researchItems = document.getElementById('researchList').children;
-      translations[currentLang].researchList.forEach((text, idx) => {
-          researchItems[idx].innerHTML = text; // IMPORTANTE! Mantém links e formatação.
+      langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'pt' ? 'en' : 'pt';
+        langBtn.textContent = currentLang === 'pt' ? "English" : "Português";
+        updateLanguage();
       });
-
-
-      document.getElementById('projectsTitle').textContent = translations[currentLang].projectsTitle;
-      document.getElementById('projectsText1').textContent = translations[currentLang].projectsText1;
-      document.getElementById('projectsText2').textContent = translations[currentLang].projectsText2;
-
-      const projectLinks = document.getElementById('projectsLinks').children;
-      translations[currentLang].projectsLinks.forEach((text, idx) => projectLinks[idx].innerHTML = text);
-      document.getElementById('researchMore').innerHTML = translations[currentLang].researchMore;
-
-
-     document.getElementById('projectsText3').innerHTML = translations[currentLang].projectsText3;
-     document.getElementById('projectsButton3').textContent = translations[currentLang].projectsButton3;
-
-      document.getElementById('contactTitle').textContent = translations[currentLang].contactTitle;
-      document.getElementById('contactText1').innerHTML = translations[currentLang].contactText1;
-      document.getElementById('contactText2').textContent = translations[currentLang].contactText2;
-    });
+      
+      // Inicialização
+      updateLanguage();
+    })();
   </script>
-
 </body>
 </html>
