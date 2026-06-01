@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos - Virginia Fernandes Mota</title>
+  <title>JOGAÊ - Projetos de Jogos Acessíveis | Virginia Fernandes Mota</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +15,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* Garantir foco visível para navegação por teclado - essencial para WCAG 2.1 */
+    *:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 4px;
+      background-color: rgba(255, 193, 7, 0.1);
+      border-radius: 4px;
+    }
+
+    /* Skip to content link - aparece apenas quando focado */
+    .skip-to-content {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 9999;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 0 0 4px 0;
+    }
+    .skip-to-content:focus-visible {
+      top: 0;
+      outline: 3px solid #ffc107;
+    }
+
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #f8f9fa;
@@ -54,258 +80,337 @@
     .publications li {
       margin-bottom: 15px;
     }
+    
+    /* Estilos do Carrossel Acessível */
     .carousel-item img {
-      width: 40% !important;    
-      margin: 0 auto;           
-      display: block;           
-      border-radius: 10px;      
+      width: 60%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 10px;
     }
-    .carousel-caption p {
-      color: #000 !important;
+    
+    /* Legenda fora da imagem para melhor contraste e leitura por leitores de tela */
+    .carousel-caption-custom {
+      background-color: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-top: 16px;
+      text-align: center;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .carousel-caption-below {
-      color: #000;
+    .carousel-caption-custom h5 {
+      color: #ffc107;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
     }
-    .carousel-caption-below h5 {
-      font-size: 1.1rem;
-      margin-bottom: .3rem;
+    .carousel-caption-custom p {
+      color: white;
+      margin-bottom: 0;
+      font-size: 0.95rem;
     }
-    .carousel-caption-below p {
-      font-size: 0.9rem;
-      margin: 0;
-  }
+    
+    /* Ajustes para os indicadores do carrossel (dots) */
+    .carousel-indicators button {
+      background-color: #007bff;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin: 0 6px;
+    }
+    .carousel-indicators .active {
+      background-color: #ffc107;
+    }
+    
+    /* Melhor contraste para links e cards */
+    a {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    a:hover, a:focus-visible {
+      color: #003d80;
+      text-decoration-thickness: 2px;
+    }
+    .card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    /* Botão de idioma */
+    #toggleLang:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <!-- Link para pular navegação e ir direto ao conteúdo principal -->
+  <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+
+  <!-- Navbar com aria-label para identificação da região -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Navegação principal">
     <div class="container">
-      <a class="navbar-brand" href="index.html"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-brand" aria-label="Virginia Fernandes Mota - Projetos"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menu de navegação">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html" id="navHome">Início</a></li>
-          <li class="nav-item"><a class="nav-link active" href="projects.html" id="navProjects">Projetos</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projects.html" id="navProjects" aria-current="page">Projetos</a></li>
         </ul>
-        <button class="btn btn-outline-light ms-3" id="toggleLang">English</button>
+        <button class="btn btn-outline-light ms-3" id="toggleLang" aria-label="Trocar idioma para Inglês / Switch to English">English</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <img src="imgs/jogae_thumbnail.png" class="hero-logo" alt="Logo do projeto Jogaê">
-    <h1 id="pageTitle">JOGAÊ: Jogos Acessíveis e Educativos</h1>
-    <p id="pageSubtitle">Um projeto de ensino e pesquisa sobre inclusão digital por meio de jogos</p>
-  </section>
-
-  <!-- Content -->
-  <section class="content">
-    <p id="intro">
-      O projeto <strong>JOGAÊ: Jogos Acessíveis e Educativos</strong> tem como objetivo promover a inclusão digital e a conscientização sobre acessibilidade por meio do desenvolvimento de jogos acessíveis. A iniciativa envolve estudantes do ensino médio técnico do COLTEC/UFMG em atividades práticas de design, programação e avaliação de jogos digitais com foco em acessibilidade.
-    </p>
-
-    <h3 id="objectivesTitle">Objetivos</h3>
-    <ul id="objectivesList">
-      <li>Promover a acessibilidade e a inclusão digital por meio de jogos;</li>
-      <li>Desenvolver competências técnicas e sensibilidade social em design inclusivo;</li>
-      <li>Explorar o potencial dos jogos como ferramentas de reflexão e aprendizagem.</li>
-    </ul>
-
-    <h3 id="resultsTitle">Resultados e Impactos</h3>
-    <p id="resultsText">
-      Os jogos desenvolvidos no âmbito do JOGAÊ têm sido apresentados em eventos acadêmicos e científicos, incluindo o <strong>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</strong>. Os estudantes participantes são incentivados a pensar criticamente sobre acessibilidade e a aplicar seus conceitos no desenvolvimento de soluções tecnológicas.
-    </p>
-
-<section id="repository" class="container mt-5 mb-5">
-  <h2 class="section-title" id="repoTitle">Repositório dos Trabalhos</h2>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card p-3 text-center" style="cursor: pointer;" onclick="window.open('https://github.com/orgs/TP-Coltec-UFMG/repositories', '_blank')">
-        <h5 id="repoCardTitle">💻 Repositório GitHub</h5>
-        <p id="repoCardText">O repositório dos trabalhos desde 2020 pode ser encontrado <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank">aqui</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Carousel Section -->
-<section id="projectsCarousel" class="container mt-5 mb-5">
-  
-  <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
+  <!-- Conteúdo principal identificado para skip link -->
+  <main id="main-content">
     
-    <!-- Indicators/dots -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="5" aria-label="Slide 6"></button>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="pageTitle">
+      <img src="imgs/jogae_thumbnail.png" class="hero-logo" alt="Logotipo do projeto Jogaê: um controle de videogame estilizado com as letras J O G A Ê em cores vibrantes.">
+      <h1 id="pageTitle">JOGAÊ: Jogos Acessíveis e Educativos</h1>
+      <p id="pageSubtitle">Um projeto de ensino e pesquisa sobre inclusão digital por meio de jogos</p>
+    </section>
 
-    <!-- Slides -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="imgs/projeto1.JPG" class="d-block w-100" alt="Eu e meus alunos à frente dos pôsteres dos trabalhos.">
-        <div class="carousel-caption-below mt-2">
-          <h5>SBGames 2024</h5>
-          <p>Tivemos 4 trabalhos aceitos no SBGames. Todos sobre jogos acessíveis criados pelos alunos (Manaus-AM).</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="imgs/projeto2.JPG" class="d-block w-100" alt="Eu e meus alunos em frente ao Congresso Nacional em Brasília.">
-        <div class="carousel-caption-below mt-2">
-          <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
-          <p>Apresentação do projeto na 3a Semana Nacional de Educação Profissional e Tecnológica em 2023 (Brasília-DF). Os alunos puderam apresentar para o Secretário de Educação Tecnoógica e o Ministro da Educação.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="imgs/projeto3.JPG" class="d-block w-100" alt="Equipe do Condetuf presente no evento junto conosco.">
-        <div class="carousel-caption-below mt-2">
-          <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
-          <p>Apresentação do projeto na 3a Semana Nacional de Educação Profissional e Tecnológica em 2023 (Brasília-DF). Os alunos puderam apresentar para o Secretário de Educação Tecnoógica e o Ministro da Educação.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="imgs/projeto4.JPG" class="d-block w-100" alt="Estudantes apresentando para o Secretário de Educação Tecnológica e para a presidente do CONDETUF.">
-        <div class="carousel-caption-below mt-2">
-          <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
-          <p>Apresentação do projeto na 3a Semana Nacional de Educação Profissional e Tecnológica em 2023 (Brasília-DF). Os alunos puderam apresentar para o Secretário de Educação Tecnoógica e o Ministro da Educação.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="imgs/projeto5.JPG" class="d-block w-100" alt="Projeto 5">
-        <div class="carousel-caption-below mt-2">
-          <h5>SBGames 2022</h5>
-          <p>Em 2022,  tivemos 3 artigos aceitos no SBGames. Todos sobre jogos acessíveis criados pelos alunos (Natal-RN).</p>
-        </div>
-      </div>
-    </div>
+    <!-- Content principal -->
+    <div class="content">
+      <p id="intro">
+        O projeto <strong>JOGAÊ: Jogos Acessíveis e Educativos</strong> tem como objetivo promover a inclusão digital e a conscientização sobre acessibilidade por meio do desenvolvimento de jogos acessíveis. A iniciativa envolve estudantes do ensino médio técnico do COLTEC/UFMG em atividades práticas de design, programação e avaliação de jogos digitais com foco em acessibilidade.
+      </p>
 
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjects" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Próximo</span>
-    </button>
-  </div>
-</section>
-
-
-  
-    <!-- Publicações -->
-    <div class="publications">
-      <h3 id="publicationsTitle">Publicações dos Alunos</h3>
-      <ul id="publicationsList">
-        <li>CARVALHO, R. I.; FANTINI, L.; VIEIRA, R. e S.; MOTA, V. F. <strong>Unnamed Game about Cats and Dungeons</strong>: Um jogo infinite runner sobre lidar com a ansiedade. In: <em>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</em>, 2024, Manaus.</li>
-
-        <li>TOSTES, J. R. W.; MEMBRIVE, G. N. L.; ALVES, H. A. F.; REZENDE, G. D. S.; RAMOS, M.; CABRAL, J. P.; VIEIRA, R. e S.; MOTA, V. F. <strong>Antena 2: Glória a Invicta ou abaixo o Governo?</strong> In: <em>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</em>, 2024, Manaus.</li>
-
-        <li>JESUS, M. T. O. G.; SANTARELLI, B. M. M.; SOARES, J. G. D.; PESSOA, I. V.; VIEIRA, R. e S.; MOTA, V. F. <strong>Rato: uma viagem sobre a natureza humana.</strong> In: <em>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</em>, 2024, Manaus.</li>
-
-        <li>LEAO, N. M.; NOGUEIRA, V. M.; VENTURA, S. C. P.; ASSIS, M. E. L.; RIBEIRO, S. C.; DURAES, N. C. C.; VIEIRA, R. e S.; MOTA, V. F. <strong>Darkest School: sobrevivendo a uma noite na escola.</strong> In: <em>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</em>, 2024, Manaus.</li>
-
-        <li>OLIVEIRA, S. E. S.; ARANTES, A.; MOTA, V.F. <strong>My Garden of Emotions</strong>: Game for Understanding Facial Expressions for Autistic Children and Adolescents. <em>INTERACCOES</em>, v.18, p.5-22, 2022.</li>
-
-        <li>PEIXOTO, A.; SILVA, G.; SARMIENTO, J.; ROSA, U.; MOTA, V.F. <strong>2222</strong>: An accessible game to promote environment protection awareness. In: <em>JEDI, Short Papers, SBGames</em>, 2022, Natal.</li>
-
-        <li>PARREIRAS, E.; BEGNAMI, G.; VIOLANTE, G.; CORDEIRO, A.; MOTA, V.F. <strong>Enem Runner</strong>: um jogo de corrida infinita acessível a deficientes visuais. In: <em>SBGames</em>, 2022, Natal.</li>
-
-        <li>VALADARES, L.; BERNARDES, E.; GONCALVES, J.; RODRIGUES, L.; MOTA, V.F. <strong>Upwards!</strong> Um jogo acessível que incentiva inclusão através da competição. In: <em>SBGames</em>, 2022, Natal.</li>
-
-        <li>OLIVEIRA, S. E. S.; ARANTES, A.; MOTA, V.F. <strong>Meu Jardim de Emoções</strong>: jogo para compreensão de expressões faciais para crianças e adolescentes autistas. In: <em>SBGames</em>, 2021, Gramado.</li>
+      <h2 id="objectivesTitle">Objetivos</h2>
+      <ul id="objectivesList" aria-label="Lista de objetivos do projeto">
+        <li>Promover a acessibilidade e a inclusão digital por meio de jogos;</li>
+        <li>Desenvolver competências técnicas e sensibilidade social em design inclusivo;</li>
+        <li>Explorar o potencial dos jogos como ferramentas de reflexão e aprendizagem.</li>
       </ul>
-    </div>
 
-    <div class="text-center">
-      <a href="index.html" class="btn btn-primary btn-back" id="backButton">Voltar à página inicial</a>
+      <h2 id="resultsTitle">Resultados e Impactos</h2>
+      <p id="resultsText">
+        Os jogos desenvolvidos no âmbito do JOGAÊ têm sido apresentados em eventos acadêmicos e científicos, incluindo o <strong>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</strong>. Os estudantes participantes são incentivados a pensar criticamente sobre acessibilidade e a aplicar seus conceitos no desenvolvimento de soluções tecnológicas.
+      </p>
+
+      <!-- Repositório GitHub - reformulado para ser totalmente acessível via teclado -->
+      <section id="repository" class="mt-5 mb-5" aria-labelledby="repoTitle">
+        <h2 id="repoTitle">Repositório dos Trabalhos</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card p-3 text-center h-100">
+              <h3 id="repoCardTitle" class="h5">💻 Repositório GitHub</h3>
+              <p id="repoCardText">
+                O repositório dos trabalhos desde 2020 pode ser encontrado 
+                <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank" rel="noopener noreferrer">
+                  aqui (abre em nova aba)
+                </a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Carrossel de Projetos - Totalmente acessível -->
+      <section id="projectsCarousel" class="mt-5 mb-5" aria-labelledby="carouselTitle">
+        <h2 id="carouselTitle" class="section-title text-center mb-4">Galeria de Eventos e Apresentações</h2>
+        
+        <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
+          <!-- Indicadores (dots) com rótulos acessíveis -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: SBGames 2024"></button>
+            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="1" aria-label="Slide 2: Semana Nacional de Educação Profissional e Tecnológica 2023 - Apresentação no Congresso"></button>
+            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="2" aria-label="Slide 3: Semana Nacional de Educação Profissional e Tecnológica 2023 - Equipe CONDETUF"></button>
+            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="3" aria-label="Slide 4: Semana Nacional de Educação Profissional e Tecnológica 2023 - Estudantes com autoridades"></button>
+            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="4" aria-label="Slide 5: SBGames 2022"></button>
+          </div>
+
+          <!-- Slides -->
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <img src="imgs/projeto1.JPG" class="d-block w-100" alt="Professora Virgínia e seus alunos posando em frente a pôsteres de trabalhos acadêmicos no evento SBGames 2024.">
+              <div class="carousel-caption-custom">
+                <h5>SBGames 2024</h5>
+                <p>Tivemos 4 trabalhos aceitos no SBGames. Todos sobre jogos acessíveis criados pelos alunos (Manaus-AM).</p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <img src="imgs/projeto2.JPG" class="d-block w-100" alt="Professora e alunos em frente ao Congresso Nacional em Brasília durante a Semana Nacional de Educação Profissional e Tecnológica.">
+              <div class="carousel-caption-custom">
+                <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
+                <p>Apresentação do projeto na 3ª Semana Nacional de Educação Profissional e Tecnológica (Brasília-DF). Os alunos puderam apresentar para o Secretário de Educação Tecnológica e o Ministro da Educação.</p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <img src="imgs/projeto3.JPG" class="d-block w-100" alt="Equipe do CONDETUF e participantes sorrindo durante o evento em Brasília.">
+              <div class="carousel-caption-custom">
+                <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
+                <p>Registro da equipe do CONDETUF presente no evento, apoiando a apresentação dos estudantes.</p>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+              <img src="imgs/projeto4.JPG" class="d-block w-100" alt="Estudantes explicando o projeto para o Secretário de Educação Tecnológica e para a presidente do CONDETUF.">
+              <div class="carousel-caption-custom">
+                <h5>Semana Nacional de Educação Profissional e Tecnológica 2023</h5>
+                <p>Estudantes apresentando o projeto para autoridades durante a feira de ciência e tecnologia.</p>
+              </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="carousel-item">
+              <img src="imgs/projeto5.JPG" class="d-block w-100" alt="Alunos e professora Virginia em evento do SBGames 2022 em Natal, exibindo certificados e trabalhos.">
+              <div class="carousel-caption-custom">
+                <h5>SBGames 2022</h5>
+                <p>Em 2022, tivemos 3 artigos aceitos no SBGames. Todos sobre jogos acessíveis criados pelos alunos (Natal-RN).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles de navegação do carrossel -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects" data-bs-slide="prev" aria-label="Slide anterior">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProjects" data-bs-slide="next" aria-label="Próximo slide">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Publicações dos Alunos -->
+      <div class="publications">
+        <h2 id="publicationsTitle">Publicações dos Alunos</h2>
+        <ul id="publicationsList" aria-label="Lista de publicações científicas de alunos do projeto Jogaê">
+          <li>CARVALHO, R. I.; FANTINI, L.; VIEIRA, R. e S.; MOTA, V. F. <strong>Unnamed Game about Cats and Dungeons</strong>: Um jogo infinite runner sobre lidar com a ansiedade. In: <em>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</em>, 2024, Manaus.</li>
+          <li>TOSTES, J. R. W.; MEMBRIVE, G. N. L.; ALVES, H. A. F.; REZENDE, G. D. S.; RAMOS, M.; CABRAL, J. P.; VIEIRA, R. e S.; MOTA, V. F. <strong>Antena 2: Glória a Invicta ou abaixo o Governo?</strong> In: <em>SBGames</em>, 2024, Manaus.</li>
+          <li>JESUS, M. T. O. G.; SANTARELLI, B. M. M.; SOARES, J. G. D.; PESSOA, I. V.; VIEIRA, R. e S.; MOTA, V. F. <strong>Rato: uma viagem sobre a natureza humana.</strong> In: <em>SBGames</em>, 2024, Manaus.</li>
+          <li>LEAO, N. M.; NOGUEIRA, V. M.; VENTURA, S. C. P.; ASSIS, M. E. L.; RIBEIRO, S. C.; DURAES, N. C. C.; VIEIRA, R. e S.; MOTA, V. F. <strong>Darkest School: sobrevivendo a uma noite na escola.</strong> In: <em>SBGames</em>, 2024, Manaus.</li>
+          <li>OLIVEIRA, S. E. S.; ARANTES, A.; MOTA, V.F. <strong>My Garden of Emotions</strong>: Game for Understanding Facial Expressions for Autistic Children and Adolescents. <em>INTERACCOES</em>, v.18, p.5-22, 2022.</li>
+          <li>PEIXOTO, A.; SILVA, G.; SARMIENTO, J.; ROSA, U.; MOTA, V.F. <strong>2222</strong>: An accessible game to promote environment protection awareness. In: <em>JEDI, Short Papers, SBGames</em>, 2022, Natal.</li>
+          <li>PARREIRAS, E.; BEGNAMI, G.; VIOLANTE, G.; CORDEIRO, A.; MOTA, V.F. <strong>Enem Runner</strong>: um jogo de corrida infinita acessível a deficientes visuais. In: <em>SBGames</em>, 2022, Natal.</li>
+          <li>VALADARES, L.; BERNARDES, E.; GONCALVES, J.; RODRIGUES, L.; MOTA, V.F. <strong>Upwards!</strong> Um jogo acessível que incentiva inclusão através da competição. In: <em>SBGames</em>, 2022, Natal.</li>
+          <li>OLIVEIRA, S. E. S.; ARANTES, A.; MOTA, V.F. <strong>Meu Jardim de Emoções</strong>: jogo para compreensão de expressões faciais para crianças e adolescentes autistas. In: <em>SBGames</em>, 2021, Gramado.</li>
+        </ul>
+      </div>
+
+      <div class="text-center">
+        <a href="index.html" class="btn btn-primary btn-back" id="backButton">Voltar à página inicial</a>
+      </div>
     </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Virginia Fernandes Mota</p>
+    <p>&copy; 2025 Virginia Fernandes Mota - Acessibilidade e Inclusão Digital</p>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Translation JS -->
+  <!-- Translation JS com melhorias de acessibilidade: ARIA live region e anúncio de mudança de idioma -->
   <script>
-    const langBtn = document.getElementById('toggleLang');
-    let currentLang = 'pt';
+    (function() {
+      const langBtn = document.getElementById('toggleLang');
+      let currentLang = 'pt';
 
-    const translations = {
-      en: {
-        navHome: "Home",
-        navProjects: "Projects",
-        pageTitle: "JOGAÊ: Accessible and Educational Games",
-        pageSubtitle: "A research and educational project on digital inclusion through games",
-        intro: "The project <strong>JOGAÊ: Accessible and Educational Games</strong> aims to promote digital inclusion and raise awareness about accessibility through the development of accessible games. The initiative involves high school students from COLTEC/UFMG in practical activities of design, programming, and evaluation of digital games focused on accessibility.Created in 2016 by Professor Virgínia Fernandes Mota, from Colégio Técnico at Universidade Federal de Minas Gerais, the project promotes every year the <strong>COLTEC Games Competition</strong>, in which all submitted games must include some accessibility component.",
-        objectivesTitle: "Objectives",
-        objectivesList: [
-          "Promote accessibility and digital inclusion through games;",
-          "Develop technical skills and social sensitivity for inclusive design;",
-          "Explore the potential of games as tools for reflection and learning."
-        ],
-        resultsTitle: "Results and Impact",
-        resultsText: "The games developed under the JOGAÊ project have been presented at academic and scientific events, including the <strong>Brazilian Symposium on Games and Digital Entertainment (SBGames)</strong>. Participating students are encouraged to think critically about accessibility and apply universal design principles in the development of technological solutions.",
-        repoTitle: "Work Repository",
-        repoCardTitle: "💻 GitHub Repository",
-        repoCardText: 'The repository of works since 2020 can be found <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank">here</a>.',
-        publicationsTitle: "Student Publications",
-        backButton: "Back to home page"
-      },
-      pt: {
-        navHome: "Início",
-        navProjects: "Projetos",
-        pageTitle: "JOGAÊ: Jogos Acessíveis e Educativos",
-        pageSubtitle: "Um projeto de pesquisa e ensino sobre inclusão digital por meio de jogos",
-        intro: "O projeto <strong>JOGAÊ: Jogos Acessíveis e Educativos</strong> tem como objetivo promover a inclusão digital e a conscientização sobre acessibilidade por meio do desenvolvimento de jogos acessíveis. A iniciativa envolve estudantes do ensino médio técnico do COLTEC/UFMG em atividades práticas de design, programação e avaliação de jogos digitais com foco em acessibilidade. Criado em 2016 pela professora Virgínia Fernandes Mota, do Colégio Técnico da Universidade Federal de Minas Gerais, o projeto promove todos os anos o <strong>Concurso de Jogos do COLTEC</strong>, no qual todos os jogos apresentados devem possuir algum componente de acessibilidade.",
-        objectivesTitle: "Objetivos",
-        objectivesList: [
-          "Promover a acessibilidade e a inclusão digital por meio de jogos;",
-          "Desenvolver competências técnicas e sensibilidade social em design inclusivo;",
-          "Explorar o potencial dos jogos como ferramentas de reflexão e aprendizagem."
-        ],
-        resultsTitle: "Resultados e Impactos",
-        resultsText: "Os jogos desenvolvidos no âmbito do JOGAÊ têm sido apresentados em eventos acadêmicos e científicos, incluindo o <strong>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</strong>. Os estudantes participantes são incentivados a pensar criticamente sobre acessibilidade e a aplicar conceitos de design universal no desenvolvimento de soluções tecnológicas.",
-        repoTitle: "Repositório dos Trabalhos",
-        repoCardTitle: "💻 Repositório GitHub",
-        repoCardText: 'O repositório dos trabalhos desde 2020 pode ser encontrado <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank">aqui</a>.',
-        publicationsTitle: "Publicações dos Alunos",
-        backButton: "Voltar à página inicial"
+      // Criar região ARIA live para anunciar mudanças de idioma
+      let liveRegion = document.createElement('div');
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('class', 'visually-hidden');
+      document.body.appendChild(liveRegion);
+
+      const translations = {
+        en: {
+          navHome: "Home",
+          navProjects: "Projects",
+          pageTitle: "JOGAÊ: Accessible and Educational Games",
+          pageSubtitle: "A research and educational project on digital inclusion through games",
+          intro: "The project <strong>JOGAÊ: Accessible and Educational Games</strong> aims to promote digital inclusion and raise awareness about accessibility through the development of accessible games. The initiative involves high school students from COLTEC/UFMG in practical activities of design, programming, and evaluation of digital games focused on accessibility. Created in 2016 by Professor Virgínia Fernandes Mota, from Colégio Técnico at Universidade Federal de Minas Gerais, the project promotes every year the <strong>COLTEC Games Competition</strong>, in which all submitted games must include some accessibility component.",
+          objectivesTitle: "Objectives",
+          objectivesList: [
+            "Promote accessibility and digital inclusion through games;",
+            "Develop technical skills and social sensitivity for inclusive design;",
+            "Explore the potential of games as tools for reflection and learning."
+          ],
+          resultsTitle: "Results and Impact",
+          resultsText: "The games developed under the JOGAÊ project have been presented at academic and scientific events, including the <strong>Brazilian Symposium on Games and Digital Entertainment (SBGames)</strong>. Participating students are encouraged to think critically about accessibility and apply universal design principles in the development of technological solutions.",
+          repoTitle: "Work Repository",
+          repoCardTitle: "💻 GitHub Repository",
+          repoCardText: 'The repository of works since 2020 can be found <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank" rel="noopener noreferrer">here (opens in new tab)</a>.',
+          publicationsTitle: "Student Publications",
+          backButton: "Back to home page"
+        },
+        pt: {
+          navHome: "Início",
+          navProjects: "Projetos",
+          pageTitle: "JOGAÊ: Jogos Acessíveis e Educativos",
+          pageSubtitle: "Um projeto de pesquisa e ensino sobre inclusão digital por meio de jogos",
+          intro: "O projeto <strong>JOGAÊ: Jogos Acessíveis e Educativos</strong> tem como objetivo promover a inclusão digital e a conscientização sobre acessibilidade por meio do desenvolvimento de jogos acessíveis. A iniciativa envolve estudantes do ensino médio técnico do COLTEC/UFMG em atividades práticas de design, programação e avaliação de jogos digitais com foco em acessibilidade. Criado em 2016 pela professora Virgínia Fernandes Mota, do Colégio Técnico da Universidade Federal de Minas Gerais, o projeto promove todos os anos o <strong>Concurso de Jogos do COLTEC</strong>, no qual todos os jogos apresentados devem possuir algum componente de acessibilidade.",
+          objectivesTitle: "Objetivos",
+          objectivesList: [
+            "Promover a acessibilidade e a inclusão digital por meio de jogos;",
+            "Desenvolver competências técnicas e sensibilidade social em design inclusivo;",
+            "Explorar o potencial dos jogos como ferramentas de reflexão e aprendizagem."
+          ],
+          resultsTitle: "Resultados e Impactos",
+          resultsText: "Os jogos desenvolvidos no âmbito do JOGAÊ têm sido apresentados em eventos acadêmicos e científicos, incluindo o <strong>Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames)</strong>. Os estudantes participantes são incentivados a pensar criticamente sobre acessibilidade e a aplicar conceitos de design universal no desenvolvimento de soluções tecnológicas.",
+          repoTitle: "Repositório dos Trabalhos",
+          repoCardTitle: "💻 Repositório GitHub",
+          repoCardText: 'O repositório dos trabalhos desde 2020 pode ser encontrado <a href="https://github.com/orgs/TP-Coltec-UFMG/repositories" target="_blank" rel="noopener noreferrer">aqui (abre em nova aba)</a>.',
+          publicationsTitle: "Publicações dos Alunos",
+          backButton: "Voltar à página inicial"
+        }
+      };
+
+      function updateLanguage() {
+        const t = translations[currentLang];
+        document.getElementById('navHome').textContent = t.navHome;
+        document.getElementById('navProjects').textContent = t.navProjects;
+        document.getElementById('pageTitle').textContent = t.pageTitle;
+        document.getElementById('pageSubtitle').textContent = t.pageSubtitle;
+        document.getElementById('intro').innerHTML = t.intro;
+        document.getElementById('objectivesTitle').textContent = t.objectivesTitle;
+        const objItems = document.getElementById('objectivesList').children;
+        if (objItems.length === t.objectivesList.length) {
+          for (let i = 0; i < objItems.length; i++) {
+            objItems[i].textContent = t.objectivesList[i];
+          }
+        }
+        document.getElementById('resultsTitle').textContent = t.resultsTitle;
+        document.getElementById('resultsText').innerHTML = t.resultsText;
+        document.getElementById('repoTitle').textContent = t.repoTitle;
+        document.getElementById('repoCardTitle').textContent = t.repoCardTitle;
+        document.getElementById('repoCardText').innerHTML = t.repoCardText;
+        document.getElementById('publicationsTitle').textContent = t.publicationsTitle;
+        document.getElementById('backButton').textContent = t.backButton;
+
+        // Atualizar o idioma do HTML
+        document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
+        
+        // Anunciar mudança para leitores de tela
+        const langMessage = currentLang === 'pt' ? 'Idioma alterado para Português' : 'Language changed to English';
+        liveRegion.textContent = langMessage;
       }
-    };
 
-    langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'pt' ? 'en' : 'pt';
-      langBtn.textContent = currentLang === 'pt' ? "English" : "Português";
+      langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'pt' ? 'en' : 'pt';
+        langBtn.textContent = currentLang === 'pt' ? "English" : "Português";
+        updateLanguage();
+      });
 
-      document.getElementById('navHome').textContent = translations[currentLang].navHome;
-      document.getElementById('navProjects').textContent = translations[currentLang].navProjects;
-      document.getElementById('pageTitle').textContent = translations[currentLang].pageTitle;
-      document.getElementById('pageSubtitle').textContent = translations[currentLang].pageSubtitle;
-      document.getElementById('intro').innerHTML = translations[currentLang].intro;
-      document.getElementById('objectivesTitle').textContent = translations[currentLang].objectivesTitle;
-      const objItems = document.getElementById('objectivesList').children;
-      translations[currentLang].objectivesList.forEach((text, idx) => objItems[idx].textContent = text);
-      document.getElementById('resultsTitle').textContent = translations[currentLang].resultsTitle;
-      document.getElementById('resultsText').innerHTML = translations[currentLang].resultsText;
-      document.getElementById('repoTitle').textContent = translations[currentLang].repoTitle;
-      document.getElementById('repoCardTitle').textContent = translations[currentLang].repoCardTitle;
-      document.getElementById('repoCardText').innerHTML = translations[currentLang].repoCardText; // <-- usar innerHTML
-      document.getElementById('publicationsTitle').textContent = translations[currentLang].publicationsTitle;
-      document.getElementById('backButton').textContent = translations[currentLang].backButton;
-    });
+      // Inicialização
+      updateLanguage();
+    })();
   </script>
 </body>
 </html>
